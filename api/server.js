@@ -15,7 +15,7 @@ server.use("/api", apiRouter);
 server.use("/api/users", usersRouter);
 
 server.get("/", (req, res) => {
-  res.send({ api: "up" });
+  res.send("It's alive!");
 });
 
 module.exports = server;
