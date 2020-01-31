@@ -8,11 +8,6 @@ describe("server", function() {
       expect(res.status).toBe(200);
     });
 
-    it("should return 200 OK", async () => {
-      const res = await request(server).get("/");
-      expect(res.status).toBe(200);
-    });
-
     it("should return JSON", function() {
       //make a GET request to /
       return request(server)

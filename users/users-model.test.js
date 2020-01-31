@@ -10,8 +10,35 @@ describe("users model", function() {
       expect(process.env.DB_ENV).toBe("testing");
     });
   });
-  // describe("test environment", function() {
-  // });
-  // describe("test environment", function() {});
-  // describe("test environment", function() {});
+
+  describe("get /", function() {
+    it("should check the test db is empty", function() {
+      expect(db).toHaveLength(2);
+    });
+  });
+
+  describe("insert()", function() {
+    beforeEach(async () => {
+      await db("users").truncate();
+    });
+
+    it("adds a new user to the database", async function() {
+      await Users.add({
+        userName: "bob",
+        password: "tomato",
+        department: "vegetable"
+      });
+      await Users.add({
+        userName: "larry",
+        password: "cucumber",
+        department: "vegetable"
+      });
+
+      const user = await db("users");
+
+      expect("users").toHaveLength(5);
+    });
+  });
+  describe("test environment", function() {});
+  describe("test environment", function() {});
 });
